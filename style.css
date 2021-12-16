@@ -1,0 +1,36 @@
+body {
+   background-color: rgb(255, 255, 255);
+}
+
+.btn {
+
+}
+
+.header {
+   position: absolute;
+   top: .50%;
+   left: 50%;
+   text-align: left;
+   font-size: 50px;
+   font-family: sans-serif;
+   font-weight: bold;
+   color: #260eff;
+   
+}
+
+.sideBarContainer { 
+   height: auto;
+   position: relative;
+   width: 300px;
+   border: 1px solid rgb(229, 146, 255);
+   border-radius: 5px;
+   background-color: #FFE1E1;
+}
+
+.List_Title {
+   position: relative;
+   text-align: center;
+   font-family: Arial;
+   color: #ffffff;
+
+}
