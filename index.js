@@ -21,21 +21,32 @@ const searchBar = document.querySelector('.submitButton').value;
 
 // // Event Listeners
 
+resultsBox = document.querySelector('#searchResults');
+
+
+// function renderSongInfoBox(resultArray) {
+//    resultsBox.textContent(resultArray)
+
+// }
+
 function search(e) {
    e.preventDefault();
 
    let query = document.querySelector('#search-Input')
    let queryValue = query.value
-   console.log(queryValue)
+   console.log('what was searched:', queryValue)
 
    searchForm.reset();
 
    fetch(`https://musicbrainz.org/ws/2/release/?query=${queryValue}&fmt=json`)
    .then(resp => resp.json())
    .then((result) => { 
-      searchResultInArray = search;
-      // console.log(searchResultInArray);
-      return result
+      console.log('result:', result);
+      const resultArray = JSON.parse(result);
+      return console.log('resultArray:', resultArray);
+
+      // return resultArray.forEach(renderSongInfoBox);
+      
    })
 }
 // Event Listener(s)
@@ -43,13 +54,12 @@ searchForm.addEventListener('submit', search)
 
 
 
-function createResultsBox() {
-   resultsBox = document.querySelector('#searchResults');
-   resultsBox.foreach(async function(){
+// function createResultsBox() {
+//    resultsBox = document.querySelector('#searchResults');
+//    resultsBox.foreach(function(){
       
-   })
+//    })
 
-}
+// }
 
-resultsBox = document.querySelector('#searchResults');
 
