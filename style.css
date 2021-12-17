@@ -34,3 +34,9 @@ body {
    color: #ffffff;
 
 }
+
+#searchResults {
+   position: sticky;
+   top: 500px;
+   box-align: center;
+}
