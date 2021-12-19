@@ -8,7 +8,9 @@ const brewList = document.getElementById('search-list');
    const searchForm = document.querySelector('#searchForm');
    const searchBar = document.querySelector('#searchSubmitButton').value;
    const searchTypeBtn = document.querySelector('#searchTypeBtn');
-
+   const searchOptions = document.createElement('select', '#selectOptions');
+   
+   
 //-----------------------------------------
 
 // Button options list for what type of content you are searching
@@ -20,13 +22,30 @@ function renderSongInfoBox(resultArray) {
 
 }
 
+function searchOptions
+let optionEl1 = document.createElement('OPTION');
+let optionEl2 = document.createElement('OPTION');
+let optionEl3 = document.createElement('OPTION');
+
+optionEl1.textContent = "Artist"
+optionEl2.textContent = "Album"
+optionEl3.textContent = "Song"
+
+searchOptions.appendChild(optionEl1);
+searchOptions.appendChild(optionEl2);
+searchOptions.appendChild(optionEl3);
+
 
 function search(e) {
    e.preventDefault();
 
-   let query = document.querySelector('#search-Input')
+
+   
+   let query = document.querySelector('#search-Input');
    let queryValue = query.value
    console.log('what was searched:', queryValue)
+   
+   searchForm.appendChild(searchOptions);
 
    searchForm.reset();
 
@@ -42,7 +61,7 @@ function search(e) {
 // Event Listener(s)
 //-------------------------------------------
    searchForm.addEventListener('submit', search)
-
+   searchTypeBtn.addEventListener('click', search)
 
 //-------------------------------------------
 
