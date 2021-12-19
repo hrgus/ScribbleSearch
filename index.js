@@ -1,33 +1,25 @@
 
-
-let base_URL = 'https://musicbrainz.org/ws/2/release?query='
 const brewList = document.getElementById('search-list');
-const searchForm = document.querySelector('.searchForm');
 
 // Info brought over from html/css
+//-----------------------------------------
+   // Divs declared as variables
+   const searchResultContainer = document.querySelector('#searchResultContainer');
+   const searchForm = document.querySelector('#searchForm');
+   const searchBar = document.querySelector('#searchSubmitButton').value;
+   const searchTypeBtn = document.querySelector('#searchTypeBtn');
 
-const searchBar = document.querySelector('.submitButton').value;
-// const searchBarValue = searchBar.value
+//-----------------------------------------
 
-
-
-// function getTracksByTitle(title){
-//    fetch(base_UR + " " + title, {
-//       // headers: 'Access-Control-Allow-Origin'
-//    })
-//    .then(resp => resp.json())
-//    // .then(tracks => { console.log(tracks)});
-// }
-
-// // Event Listeners
-
-resultsBox = document.querySelector('#searchResults');
-
-
+// Button options list for what type of content you are searching
+//-----------------------------------------
+   
+//-----------------------------------------
 function renderSongInfoBox(resultArray) {
    resultsBox.textContent(resultArray)
 
 }
+
 
 function search(e) {
    e.preventDefault();
@@ -40,30 +32,20 @@ function search(e) {
 
    fetch(`https://musicbrainz.org/ws/2/release/?query=${queryValue}&fmt=json`)
    .then(resp => resp.json())
-   .then((result) => { 
-      // console.log('result:', result);
-      const resultAsString = JSON.stringify(result);
-      // console.log('resultAsString:', resultAsString);
-
-      let newArray = resultAsString.split('');
-
-      // const obj = [];
-
-      // for (let key of resultAsString) {
-      //    obj.push(key)
-      // }
-      console.log(newArray);
+   .then((result) => {
+      console.log(result);
+      console.log(result['releases']['0']['artist-Credit']['0']['artist']['sort-name']);
+      // return result;
    })
 }
+
 // Event Listener(s)
-searchForm.addEventListener('submit', search)
+//-------------------------------------------
+   searchForm.addEventListener('submit', search)
 
-// function createResultsBox(resultAsArray) {
-//    resultsBox = document.querySelector('#searchResults');
-//    resultAsArray.foreach(function(){
-//       resultsBox.textContent()
-//    })
 
-// }
+//-------------------------------------------
+
+
 
 
