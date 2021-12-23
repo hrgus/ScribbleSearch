@@ -12,29 +12,7 @@ const brewList = document.getElementById('search-list');
    const searchOptions = document.createElement('select', '#selectOptions');
   
    
-   //-----------------------------------------
-   
-   // Button options list for what type of content you are searching
-   //-----------------------------------------
-   
-   //-----------------------------------------
-   
-   
-   
-//    function searchOptionsFunc(){
-//       let optionEl1 = document.createElement('OPTION');
-//       let optionEl2 = document.createElement('OPTION');
-//       let optionEl3 = document.createElement('OPTION');
-      
-//       optionEl1.textContent = "Artist"
-//       optionEl2.textContent = "Album"
-//       optionEl3.textContent = "Song"
-      
-//       searchOptions.appendChild(optionEl1);
-//       searchOptions.appendChild(optionEl2);
-//        searchOptions.appendChild(optionEl3);
 
-// }
 
 function search(e) {
    e.preventDefault();
@@ -60,18 +38,25 @@ function search(e) {
 }
 
 function renderSongInfoBox(resultObj) {
-   
-   const resultsBox = document.createElement('div');
-   const resultsBoxHead = document.createElement('h2');
-   const resultsContainer = document.createElement('p');
+ 
    const body = document.querySelector('#body');
+
+   const resultsBox = document.createElement('div');
    
    body.appendChild(resultsBox);
-   debugger
+
+   const resultsBoxHead = document.createElement('h2');
+   
+   const resultsContainer = document.createElement('p');
+  
    resultsBox.className = "resultBox";
+   
    resultsBoxHead.textContent = resultObj.title;
+  
    resultsContainer.textContent = resultObj['artist-credit'][0].artist.name;
+ 
    resultsBox.appendChild(resultsBoxHead);
+ 
    resultsBox.appendChild(resultsContainer); 
 
 }
