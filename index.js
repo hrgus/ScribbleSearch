@@ -30,15 +30,13 @@ function search(e) {
    .then((resultsObj) => {
       // console.log(resultsObj)
       resultsArray = resultsObj['releases'];
+      console.log(resultsArray);
       return resultsArray.forEach(renderSongInfoBox);
-      
-   })
-   // console.log(results);
+   } )
    // console.log(result['releases']); 
 }
 
 function renderSongInfoBox(resultObj) {
- 
    // const for selecting the body
    // const body = document.querySelector('#body');
    // const for selecting the Div that contains the <ol>
@@ -63,13 +61,14 @@ function renderSongInfoBox(resultObj) {
    resultsParagraph.textContent = '- ' + resultObj['artist-credit'][0].artist.name;
    // Appending the <p> the <li> Element
    resultsListItem.appendChild(resultsParagraph);
- 
-   // resultsDiv.appendChild(resultsListItemHead);
- 
-   // resultsDiv.appendChild(resultsParagraph); 
+   
+
+   // function reset 
    
 }
-// renderSongInfoBox();
+
+
+
 
 // Event Listener(s)
 //-------------------------------------------
