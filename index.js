@@ -39,11 +39,11 @@ function search(e) {
 
 function renderSongInfoBox(resultObj) {
  
+   // const for selecting the body
    const body = document.querySelector('#body');
-
-   const resultsBox = document.createElement('div');
-   
-   body.appendChild(resultsBox);
+   // const for creating the 
+   const resultsDiv = document.createElement('div');
+   body.appendChild(resultsDiv);
 
    const resultsBoxHead = document.createElement('h2');
    
