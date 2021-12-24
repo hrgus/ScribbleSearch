@@ -35,7 +35,8 @@ body {
 
 }
 
-#searchResults {
+#resultsDiv {
+   background-color: rgba(110, 209, 255, 0.521);
    position: sticky;
    top: 500px;
    box-align: center;

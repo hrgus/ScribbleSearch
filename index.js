@@ -40,25 +40,34 @@ function search(e) {
 function renderSongInfoBox(resultObj) {
  
    // const for selecting the body
-   const body = document.querySelector('#body');
-   // const for creating the 
-   const resultsDiv = document.createElement('div');
-   body.appendChild(resultsDiv);
-
-   const resultsBoxHead = document.createElement('h2');
+   // const body = document.querySelector('#body');
+   // const for selecting the Div that contains the <ol>
+   // const resultsDiv = document.querySelector('#resultsDiv');
    
-   const resultsContainer = document.createElement('p');
-  
-   resultsBox.className = "resultBox";
+   // const for selecting the <ol> which contains the <li> items 
+   const resultsOl = document.querySelector('#resultsOl');
    
-   resultsBoxHead.textContent = resultObj.title;
-  
-   resultsContainer.textContent = resultObj['artist-credit'][0].artist.name;
+   //const for creating <li> items
+   const resultsListItem = document.createElement('li');
+   // Appending each <li> to the <ol>
+   resultsOl.appendChild(resultsListItem);
+   // const for creating the <h4> for each <li> item
+   const resultsListItemHead = document.createElement('h4');
+   // assigning the textContent of the <h4> Elements
+   resultsListItemHead.textContent = resultObj.title;
+   // Appending the <h4> to the <li> items
+   resultsListItem.appendChild(resultsListItemHead);
+   // const for creating the <p> for each <li> item
+   const resultsParagraph = document.createElement('p');
+   // assigning the textContent of the <p> Elements
+   resultsParagraph.textContent = '- ' + resultObj['artist-credit'][0].artist.name;
+   // Appending the <p> the <li> Element
+   resultsListItem.appendChild(resultsParagraph);
  
-   resultsBox.appendChild(resultsBoxHead);
+   // resultsDiv.appendChild(resultsListItemHead);
  
-   resultsBox.appendChild(resultsContainer); 
-
+   // resultsDiv.appendChild(resultsParagraph); 
+   
 }
 // renderSongInfoBox();
 
