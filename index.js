@@ -59,8 +59,8 @@ function renderSongInfoBox(resultObj) {
    // const resultsOl = document.querySelector('#resultsOl');
 
    const unSavedIcon = document.createElement('Button') 
-   unsa 
-   "\u002B";
+   unSavedIcon.setAttribute("id", "unsavedBtn")
+   unSavedIcon.textContent = "\u002B";
 
    //const for creating <li> items
    const resultsListItem = document.createElement('li');
