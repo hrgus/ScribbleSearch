@@ -59,8 +59,19 @@ function renderSongInfoBox(resultObj) {
    // const resultsOl = document.querySelector('#resultsOl');
 
    const unSavedIcon = document.createElement('Button') 
-   unSavedIcon.setAttribute("id", "unsavedBtn")
-   unSavedIcon.textContent = "\u002B";
+
+   function refreshresultBtnFunc(unSavedIcon) {
+      if(unSavedIcon.textContent === "+") {
+      unSavedIcon.textContent === "✔";
+      } else if (unSavedIcon.textContent === "✔") {
+         unSavedIcon.textContent === "+";
+      }
+   }
+
+   refreshResultBtnEl.addEventListener('click', refreshresultBtnFunc)
+
+   unSavedIcon.setAttribute("id", "unsavedBtn.textContent")
+   unSavedIcon.textContent = "+";
 
    //const for creating <li> items
    const resultsListItem = document.createElement('li');
@@ -70,14 +81,15 @@ function renderSongInfoBox(resultObj) {
    const resultsListItemHead = document.createElement('h4');
    resultsListItemHead.setAttribute("id", "resultListItemH4")
    // assigning the textContent of the <h4> Elements
-   resultsListItemHead.textContent = resultObj.title + " " + unSavedIcon;
+   resultsListItemHead.textContent = resultObj['artist-credit'][0].artist.name + "  ";
+   resultsListItemHead.appendChild(unSavedIcon);
    // Appending the <h4> to the <li> items
    resultsListItem.appendChild(resultsListItemHead);
    // const for creating the <p> for each <li> item
    const resultsParagraph = document.createElement('p');
-   resultsParagraph.setAttribute("id", "resultListItemP");
+   resultsParagraph.setAttribute("id", "resultListItemP");   
    // assigning the textContent of the <p> Elements
-   resultsParagraph.textContent = '- ' + resultObj['artist-credit'][0].artist.name;
+   resultsParagraph.textContent = '- ' + resultObj.title;
    // Appending the <p> the <li> Element
    resultsListItem.appendChild(resultsParagraph);
 
@@ -91,10 +103,7 @@ function renderSongInfoBox(resultObj) {
 //-------------------------------------------
    searchForm.addEventListener('submit', search)
    searchTypeBtn.addEventListener('click', search)
-   refreshResultBtnEl.addEventListener('click', function(e) {
-      console.log(resultsDiv);
-      // delete(resultsDiv);
-   })
+
 //-------------------------------------------
 
 
