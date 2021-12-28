@@ -56,9 +56,15 @@ function createSongCard(result) {
          savedSongslist.className = 'savedSongsList'
       let savedSongsContainer = document.querySelector('#savedSongs');
          savedSongsContainer.appendChild(savedSongslist);
-      songCardHouse.remove();
+      const unSaveSongBtn = documnet.createElement('button');
+         unSaveSongBtn.className = 'unsavedSongBtn';
+         unSaveSongBtn.textContent = "-";
+         saveSongBtn.replaceWith(unSaveSongBtn);      
+         songCardHouse.remove();
+
       
    }
+   
    
 }
 
