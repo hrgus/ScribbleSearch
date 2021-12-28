@@ -1,13 +1,6 @@
 
-const savedSongsList = document.createElement('ul');
-const saveSongBtn = document.createElement('button');
-   saveSongBtn.textContent = "+";
 
-function createSavedSongsList(e) {
 
-}
-
-saveSongBtn.addEventListener('click', createSavedSongsList)
 
 const searchForm = document.querySelector('#searchForm');
 
@@ -31,71 +24,44 @@ function searchForSong(e){
 searchForm.addEventListener('submit', searchForSong)
 
 function createSongCard(result) {
+   const saveSongBtn = document.createElement('button');
+      saveSongBtn.setAttribute('class', 'saveSongBtn')
+      saveSongBtn.textContent = '+';
+      saveSongBtn.addEventListener('click', createSavedSongsList)
    let releaseDate = document.createElement('p');
       releaseDate.textContent = 'Release Date: ' + result.date;
    let songTitle = document.createElement('p');
       songTitle.textContent = 'Song Title: ' + result.title;
    let artistName = document.createElement('h4');
-      artistName.textContent = result['artist-credit'][0].artist.name;  
+      artistName.textContent = result['artist-credit'][0].artist.name + "  "; 
    let songList = document.createElement('li');
       songList.className = 'song';
+      songList.textContent = artistName.innerText;
    let songCard = document.createElement('ul');
 	   songCard.className = 'songCard'
-      songCard.appendChild(songList);
-      songList.textContent = artistName.innerText + "  ";
       songCard.appendChild(saveSongBtn);
       songList.appendChild(songTitle);
       songList.appendChild(releaseDate);
-   let songCardHouse = document.createElementNS('div');
-      songCardHouse.setAttribute('id', 'songCardHouseDiv');
+      songCard.appendChild(songList);
+   let songCardHouse = document.createElement('div');
+      songCardHouse.setAttribute('class', 'songCardHouseDiv');
       songCardHouse.appendChild(songCard);
+      songCardHouse.appendChild(saveSongBtn);
+   let songCardsContainer = document.querySelector('#songCardsContainer');
+      songCardsContainer.appendChild(songCardHouse);
    let body = document.querySelector('body');
-      body.appendChild(songCardHouse);
+      body.appendChild(songCardsContainer);
+   function createSavedSongsList() {
+      let savedSongslist = songCardHouse.cloneNode(true);
+         savedSongslist.className = 'savedSongsList'
+      let savedSongsContainer = document.querySelector('#savedSongs');
+         savedSongsContainer.appendChild(savedSongslist);
+      songCardHouse.remove();
+      
+   }
+   
 }
 
+// const savedSongsList = document.createElement('ul');
 
 
-
-
-// const charactersList = document.getElementById('charactersList');
-// const searchBar = document.getElementById('searchBar');
-// let hpCharacters = [];
-
-// searchBar.addEventListener('keyup', (e) => {
-//     const searchString = e.target.value.toLowerCase();
-
-//     const filteredCharacters = hpCharacters.filter((character) => {
-//         return (
-//             character.name.toLowerCase().includes(searchString) ||
-//             character.house.toLowerCase().includes(searchString)
-//         );
-//     });
-//     displayCharacters(filteredCharacters);
-// });
-
-// const loadCharacters = async () => {
-//     try {
-//         const res = await fetch('https://musicbrainz.org/ws/2/release/?query=${queryValue}&fmt=json');
-//         hpCharacters = await res.json();
-//         displayCharacters(hpCharacters);
-//     } catch (err) {
-//         console.error(err);
-//     }
-// };
-
-// const displayCharacters = (characters) => {
-//     const htmlString = characters
-//         .map((character) => {
-//             return `
-//             <li class="character">
-//                 <h2>${character.name}</h2>
-//                 <p>House: ${character.house}</p>
-//                 <img src="${character.image}"></img>
-//             </li>
-//         `;
-//         })
-//         .join('');
-//     charactersList.innerHTML = htmlString;
-// };
-
-// loadCharacters();

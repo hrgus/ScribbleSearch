@@ -1,9 +1,36 @@
 body {
-   background-color: rgb(255, 255, 255);
+   font-family: sans-serif;
+   background-color: #111d4a;
 }
 
-.btn {
+.songCardsContainer {
+   background-color: rgba(red, green, blue, 0.0);
+}
 
+.songCardHouseDiv {
+   position: relative;
+   background-color: azure;
+   color: black;
+   width: 34%;
+   text-align: left;
+   border: black;
+   border-radius: 15px;
+}
+
+#savedSongs {
+   width: 1800px;
+   left: 50%;
+}
+
+.savedSongsList {
+   position: sticky;
+   left: 50%;
+   background-color: azure;
+   color: black;
+   width: 34%;
+   text-align: left;
+   border: black;
+   border-radius: 15px; 
 }
 
 .header {
@@ -14,18 +41,18 @@ body {
    font-size: 50px;
    font-family: sans-serif;
    font-weight: bold;
-   color: #260eff;
+   color: #f1f0fc;
    
 }
 
-.sideBarContainer { 
+/* .sideBarContainer { 
    height: auto;
    position: relative;
    width: 300px;
    border: 1px solid rgb(229, 146, 255);
    border-radius: 5px;
    background-color: #FFE1E1;
-}
+} */
 
 .List_Title {
    position: relative;
@@ -35,9 +62,7 @@ body {
 
 }
 
-#resultsDiv {
-   background-color: rgba(110, 209, 255, 0.521);
-   position: sticky;
-   top: 500px;
-   box-align: center;
+.saveSongBtn {
+   position: relative;
+   /* left: 15px; */
 }
