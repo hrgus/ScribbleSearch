@@ -1,111 +1,101 @@
 
-const brewList = document.getElementById('search-list');
+const savedSongsList = document.createElement('ul');
+const saveSongBtn = document.createElement('button');
+   saveSongBtn.textContent = "+";
 
-// Info brought over from html/css
-//-----------------------------------------
-// Divs declared as variables
-   const searchResultContainer = document.querySelector('#searchResultContainer');
-   const searchForm = document.querySelector('#searchForm');
-   const searchBar = document.querySelector('#searchSubmitButton').value;
-   const searchBox = document.querySelector('#searchBox');
-   const searchTypeBtn = document.querySelector('#searchTypeBtn');
-   const searchOptions = document.createElement('select', '#selectOptions');
-  
-   const refreshResultBtn = document.querySelector('#refreshResultBtn');
+function createSavedSongsList(e) {
 
+}
 
-function search(e) {
+saveSongBtn.addEventListener('click', createSavedSongsList)
+
+const searchForm = document.querySelector('#searchForm');
+
+function searchForSong(e){
    e.preventDefault();
-   
+
    let query = document.querySelector('#search-Input');
    let queryValue = query.value;
-   console.log('what was searched:', queryValue)
-   
-   searchForm.appendChild(searchOptions);
-   
    searchForm.reset();
-   
+
    fetch(`https://musicbrainz.org/ws/2/release/?query=${queryValue}&fmt=json`)
-   .then(results => results.json())
-   .then((resultsObj) => {
-      // console.log(resultsObj)
-      resultsArray = resultsObj['releases'];
-      console.log(resultsArray);
-      return resultsArray.forEach(renderSongInfoBox);
-   } )
-   
-   
+   .then(resp => resp.json())
+   .then((respObj) => { 
+	   respArray = respObj['releases'];
+      console.log(respArray);
+      respArray.forEach(result => createSongCard(result));
+	})
+   .catch((error) => console.log(error))
 }
 
+searchForm.addEventListener('submit', searchForSong)
 
-// const for selecting the body
-const body = document.querySelector('#body');
-// const for selecting the Div that contains the <ol>
-const resultsDiv = document.createElement('Div');
-resultsDiv.setAttribute("id", "resultsDiv");
-const refreshResultBtnEl = document.createElement('button');
-refreshResultBtnEl.setAttribute("id", "refreshResultBtn");
-refreshResultBtnEl.textContent = "Refresh";
-resultsDiv.appendChild(refreshResultBtnEl);
-const resultsOlEl = document.createElement('ol');
-resultsOlEl.setAttribute("id", "resultsOl");
-resultsDiv.appendChild(resultsOlEl);
-body.appendChild(resultsDiv);
-
-
-function renderSongInfoBox(resultObj) {
-   
-   // const for selecting the <ol> which contains the <li> items 
-   // const resultsOl = document.querySelector('#resultsOl');
-
-   const unSavedIcon = document.createElement('Button') 
-
-   function refreshresultBtnFunc(unSavedIcon) {
-      if(unSavedIcon.textContent === "+") {
-      unSavedIcon.textContent === "✔";
-      } else if (unSavedIcon.textContent === "✔") {
-         unSavedIcon.textContent === "+";
-      }
-   }
-
-   refreshResultBtnEl.addEventListener('click', refreshresultBtnFunc)
-
-   unSavedIcon.setAttribute("id", "unsavedBtn.textContent")
-   unSavedIcon.textContent = "+";
-
-   //const for creating <li> items
-   const resultsListItem = document.createElement('li');
-   // Appending each <li> to the <ol>
-   resultsOlEl.appendChild(resultsListItem);
-   // const for creating the <h4> for each <li> item
-   const resultsListItemHead = document.createElement('h4');
-   resultsListItemHead.setAttribute("id", "resultListItemH4")
-   // assigning the textContent of the <h4> Elements
-   resultsListItemHead.textContent = resultObj['artist-credit'][0].artist.name + "  ";
-   resultsListItemHead.appendChild(unSavedIcon);
-   // Appending the <h4> to the <li> items
-   resultsListItem.appendChild(resultsListItemHead);
-   // const for creating the <p> for each <li> item
-   const resultsParagraph = document.createElement('p');
-   resultsParagraph.setAttribute("id", "resultListItemP");   
-   // assigning the textContent of the <p> Elements
-   resultsParagraph.textContent = '- ' + resultObj.title;
-   // Appending the <p> the <li> Element
-   resultsListItem.appendChild(resultsParagraph);
-
-   // function reset 
-   
+function createSongCard(result) {
+   let releaseDate = document.createElement('p');
+      releaseDate.textContent = 'Release Date: ' + result.date;
+   let songTitle = document.createElement('p');
+      songTitle.textContent = 'Song Title: ' + result.title;
+   let artistName = document.createElement('h4');
+      artistName.textContent = result['artist-credit'][0].artist.name;  
+   let songList = document.createElement('li');
+      songList.className = 'song';
+   let songCard = document.createElement('ul');
+	   songCard.className = 'songCard'
+      songCard.appendChild(songList);
+      songList.textContent = artistName.innerText + "  ";
+      songCard.appendChild(saveSongBtn);
+      songList.appendChild(songTitle);
+      songList.appendChild(releaseDate);
+   let songCardHouse = document.createElementNS('div');
+      songCardHouse.setAttribute('id', 'songCardHouseDiv');
+      songCardHouse.appendChild(songCard);
+   let body = document.querySelector('body');
+      body.appendChild(songCardHouse);
 }
 
 
 
-// Event Listener(s)
-//-------------------------------------------
-   searchForm.addEventListener('submit', search)
-   searchTypeBtn.addEventListener('click', search)
-
-//-------------------------------------------
 
 
+// const charactersList = document.getElementById('charactersList');
+// const searchBar = document.getElementById('searchBar');
+// let hpCharacters = [];
 
+// searchBar.addEventListener('keyup', (e) => {
+//     const searchString = e.target.value.toLowerCase();
 
+//     const filteredCharacters = hpCharacters.filter((character) => {
+//         return (
+//             character.name.toLowerCase().includes(searchString) ||
+//             character.house.toLowerCase().includes(searchString)
+//         );
+//     });
+//     displayCharacters(filteredCharacters);
+// });
+
+// const loadCharacters = async () => {
+//     try {
+//         const res = await fetch('https://musicbrainz.org/ws/2/release/?query=${queryValue}&fmt=json');
+//         hpCharacters = await res.json();
+//         displayCharacters(hpCharacters);
+//     } catch (err) {
+//         console.error(err);
+//     }
+// };
+
+// const displayCharacters = (characters) => {
+//     const htmlString = characters
+//         .map((character) => {
+//             return `
+//             <li class="character">
+//                 <h2>${character.name}</h2>
+//                 <p>House: ${character.house}</p>
+//                 <img src="${character.image}"></img>
+//             </li>
+//         `;
+//         })
+//         .join('');
+//     charactersList.innerHTML = htmlString;
+// };
+
+// loadCharacters();
