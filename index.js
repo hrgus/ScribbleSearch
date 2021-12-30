@@ -27,7 +27,7 @@ function createSongCard(result) {
    const saveSongBtn = document.createElement('button');
       saveSongBtn.setAttribute('class', 'saveSongBtn')
       saveSongBtn.textContent = '+';
-      saveSongBtn.addEventListener('click', createSavedSongsList)
+      saveSongBtn.addEventListener('click', clearSongCardsContainer)
    let releaseDate = document.createElement('p');
       releaseDate.textContent = 'Release Date: ' + result.date;
    let songTitle = document.createElement('p');
@@ -51,23 +51,43 @@ function createSongCard(result) {
       songCardsContainer.appendChild(songCardHouse);
    let body = document.querySelector('body');
       body.appendChild(songCardsContainer);
+   let savedSongsList = songCardHouse.cloneNode(true);
+      savedSongsList.className = 'savedSongsList';
    function createSavedSongsList() {
-      let savedSongslist = songCardHouse.cloneNode(true);
-         savedSongslist.className = 'savedSongsList'
       let savedSongsContainer = document.querySelector('#savedSongs');
-         savedSongsContainer.appendChild(savedSongslist);
+         savedSongsContainer.appendChild(savedSongsList);
       const unSaveSongBtn = document.createElement('button');
          unSaveSongBtn.className = 'unsavedSongBtn';
          unSaveSongBtn.textContent = "-";
          unSaveSongBtn.addEventListener('click', unSaveSongFunc);
-         // savedSongsContainer.appendChild(unSaveSongBtn);
-         songCardHouse.innerHTML = "";
+         savedSongsList.appendChild(unSaveSongBtn);
+      const postNoteBtn = document.createElement('button');
+         postNoteBtn.setAttribute('class', 'postNoteBtn')
+         postNoteBtn.textContent = 'post';
+         postNoteBtn.addEventListener('mouseup', createNoteBook);     
+      const addNoteToCard = document.createElement('input');
+         addNoteToCard.setAttribute('class', 'note');
+         savedSongsList.appendChild(addNoteToCard);
+         savedSongsList.appendChild(postNoteBtn);
+      function createNoteBook(){
+         const note = document.createElement('p');
+            note.setAttribute('class', 'note');
+            note.textContent = addNoteToCard.value;
+         const noteBook = document.createElement('div');
+            noteBook.setAttribute('class', 'noteBook');
+         noteBook.appendChild(note);
+         savedSongsList.appendChild(noteBook);
+      }
+      function unSaveSongFunc() {
+         savedSongsContainer.appendChild(songCardHouse);
+      }
 
-      
    }
+   function clearSongCardsContainer() {
+      // songCardHouse.innerHTML = " ";
+      songCardsContainer.removeChild(songCardHouse);
+      createSavedSongsList()
 
-   function unSaveSongFunc() {
-      
    }
    
 }
