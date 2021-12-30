@@ -56,15 +56,19 @@ function createSongCard(result) {
          savedSongslist.className = 'savedSongsList'
       let savedSongsContainer = document.querySelector('#savedSongs');
          savedSongsContainer.appendChild(savedSongslist);
-      const unSaveSongBtn = documnet.createElement('button');
+      const unSaveSongBtn = document.createElement('button');
          unSaveSongBtn.className = 'unsavedSongBtn';
          unSaveSongBtn.textContent = "-";
-         saveSongBtn.replaceWith(unSaveSongBtn);      
-         songCardHouse.remove();
+         unSaveSongBtn.addEventListener('click', unSaveSongFunc);
+         // savedSongsContainer.appendChild(unSaveSongBtn);
+         songCardHouse.innerHTML = "";
 
       
    }
-   
+
+   function unSaveSongFunc() {
+      
+   }
    
 }
 
