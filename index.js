@@ -64,7 +64,8 @@ function createSongCard(result) {
       const postNoteBtn = document.createElement('button');
          postNoteBtn.setAttribute('class', 'postNoteBtn')
          postNoteBtn.textContent = 'post';
-         postNoteBtn.addEventListener('mouseup', createNoteBook);     
+         postNoteBtn.addEventListener('keyup', createNoteBook)
+   
       const addNoteToCard = document.createElement('input');
          addNoteToCard.setAttribute('class', 'note');
          savedSongsList.appendChild(addNoteToCard);
@@ -79,7 +80,9 @@ function createSongCard(result) {
          savedSongsList.appendChild(noteBook);
       }
       function unSaveSongFunc() {
-         savedSongsContainer.appendChild(songCardHouse);
+         savedSongsList.innerHTML = " ";
+         savedSongsContainer.removeChild(savedSongsList);
+         songCardsContainer.prepend(songCardHouse);
       }
 
    }
