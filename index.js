@@ -62,25 +62,6 @@ function createSongCard(result) {
          unSaveSongBtn.textContent = "-";
          unSaveSongBtn.addEventListener('click', unSaveSongFunc);
          savedSongsList.appendChild(unSaveSongBtn);
-      const postNoteBtn = document.createElement('button');
-         postNoteBtn.setAttribute('class', 'postNoteBtn')
-         postNoteBtn.textContent = 'post';
-         postNoteBtn.addEventListener('keyup', createNoteBook)
-   
-      const addNoteToCard = document.createElement('input');
-         addNoteToCard.setAttribute('class', 'note');
-         savedSongsList.appendChild(addNoteToCard);
-         savedSongsList.appendChild(postNoteBtn);
-     
-         function createNoteBook(){
-            const note = document.createElement('p');
-               note.setAttribute('class', 'note');
-               note.textContent = addNoteToCard.value;
-            const noteBook = document.createElement('div');
-               noteBook.setAttribute('class', 'noteBook');
-               noteBook.appendChild(note);
-               savedSongsList.appendChild(noteBook);
-         }
      
       function unSaveSongFunc() {
          savedSongsList.innerHTML = " ";
