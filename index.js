@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             savedSongsList.appendChild(unSaveSongBtn);
         
          function unSaveSongFunc() {
-            savedSongsList.innerHTML = " ";
+            savedSongsList.removeChild(unSaveSongBtn);
             savedSongsContainer.removeChild(savedSongsList);
             songCardsContainer.prepend(songCardHouse);
          }
