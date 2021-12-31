@@ -53,6 +53,7 @@ function createSongCard(result) {
       body.appendChild(songCardsContainer);
    let savedSongsList = songCardHouse.cloneNode(true);
       savedSongsList.className = 'savedSongsList';
+   
    function createSavedSongsList() {
       let savedSongsContainer = document.querySelector('#savedSongs');
          savedSongsContainer.appendChild(savedSongsList);
@@ -70,15 +71,17 @@ function createSongCard(result) {
          addNoteToCard.setAttribute('class', 'note');
          savedSongsList.appendChild(addNoteToCard);
          savedSongsList.appendChild(postNoteBtn);
-      function createNoteBook(){
-         const note = document.createElement('p');
-            note.setAttribute('class', 'note');
-            note.textContent = addNoteToCard.value;
-         const noteBook = document.createElement('div');
-            noteBook.setAttribute('class', 'noteBook');
-         noteBook.appendChild(note);
-         savedSongsList.appendChild(noteBook);
-      }
+     
+         function createNoteBook(){
+            const note = document.createElement('p');
+               note.setAttribute('class', 'note');
+               note.textContent = addNoteToCard.value;
+            const noteBook = document.createElement('div');
+               noteBook.setAttribute('class', 'noteBook');
+               noteBook.appendChild(note);
+               savedSongsList.appendChild(noteBook);
+         }
+     
       function unSaveSongFunc() {
          savedSongsList.innerHTML = " ";
          savedSongsContainer.removeChild(savedSongsList);
