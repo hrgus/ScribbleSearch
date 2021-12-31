@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
          saveSongBtn.setAttribute('class', 'saveSongBtn')
          saveSongBtn.textContent = '+';
          saveSongBtn.addEventListener('click', clearSongCardsContainer)
-     
-     \    let releaseDate = document.createElement('p');
+      let releaseDate = document.createElement('p');
          releaseDate.textContent = 'Release Date: ' + result.date;
       let songTitle = document.createElement('p');
          songTitle.textContent = 'Song Title: ' + result.title;
@@ -71,17 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
    
       }
       function clearSongCardsContainer() {
-         // songCardHouse.innerHTML = " ";
          songCardsContainer.removeChild(songCardHouse);
          createSavedSongsList()
    
       }
       
-   }
-   
-   // const savedSongsList = document.createElement('ul');
-   
-   
-   
+   }      
 
 })
