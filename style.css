@@ -7,9 +7,16 @@ ul{
    list-style-type: none;
 }
 
+/* #head{
+   display: inline-block;
+   position: relative;
+   left: 50%;
+} */
+
 header {
+   padding-top: 25px;
+   padding-bottom: 25px;
    text-align: center;
-   text-align: left;
    font-size: 50px;
    font-family: sans-serif;
    font-weight: bold;
@@ -20,6 +27,7 @@ header {
 #searchBox {
    display: inline-block;
    position: relative;
+   padding-bottom: 15px;
    left: 50%;
    transform: translateX(-50%);
 }
@@ -30,32 +38,37 @@ header {
    margin: auto;
    margin-top: 10px;
    color: black;
-   width: 50%;
+   width: 100%;
    right: 50%;
    left: 0px;
    top: 50%;
    bottom: 50%;
-   text-align: left;
+   text-align: center;
    border: black;
    border-radius: 15px;
 }
 
+.saveSongBtn, .unsavedSongBtn{
+   display: inline-block;
+   
+}
 
 .savedSongsList {
    background-color: azure;
    color: black;
-   width: 50%;
+   width: 100%;
    right: 50%;
    left: 50%;
    top: 50%;
    bottom: 50%;
-   text-align: left;
+   text-align: center;
    border: black;
    border-radius: 15px; 
 }
 
 #songCardsContainer {
-   background-color: yellow;
+   /* background-color: yellow; */
+   padding-top: 20px;
    float: right;
    width: 50%;
    border-radius: 5px;
@@ -67,7 +80,9 @@ header {
 }
 
 #savedSongs {
-   background-color: violet;
+   /* background-color: violet; */
+   vertical-align: 200px;
+   padding-left: 20px;
    float: left;
    width: 50%;
    border-radius: 5px;
