@@ -109,7 +109,11 @@ header {
 
 }
 
-.saveSongBtn {
-   position: relative;
-   /* left: 15px; */
+#errorMessageHouse{
+   background-color: rgb(228, 228, 102);
+   width: 100%;
+   right: 50%;
+   left: 0px;
+   top: 50%;
+   bottom: 50%;
 }

@@ -17,12 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
          console.log(respArray);
          respArray.forEach(result => createSongCard(result));
       })
-      .catch((error) => {
-         const errorMessage = error;
-
-         const errorContainer = document.createElement('div')
-         errorContainer.textContent = errorMessage;
-         body.appendChild(errorContainer)
+      .catch(function(error) {
+      
+         if(error === error){
+            const errorMessage = document.createElement('p');
+            errorMessage.id = 'errorMessage';
+            errorMessage.textContent = "Sorry, there were no songs found with that name.";
+            const errorMessageHouse = document.createElement('div');
+            errorMessageHouse.id = 'errorMessageHouse';
+            errorMessageHouse.appendChild(errorMessage);
+            document.appendChild(errorMessageHouse);
+         } 
+         
       })
    }
    
