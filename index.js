@@ -17,7 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
          console.log(respArray);
          respArray.forEach(result => createSongCard(result));
       })
-      .catch((error) => console.log(error))
+      .catch((error) => {
+         const errorMessage = error;
+
+         const errorContainer = document.createElement('div')
+         errorContainer.textContent = errorMessage;
+         body.appendChild(errorContainer)
+      })
    }
    
    searchForm.addEventListener('submit', searchForSong)
