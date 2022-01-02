@@ -18,16 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
          respArray.forEach(result => createSongCard(result));
       })
       .catch(function(error) {
-      
-         if(error === error){
-            const errorMessage = document.createElement('p');
-            errorMessage.id = 'errorMessage';
-            errorMessage.textContent = "Sorry, there were no songs found with that name.";
-            const errorMessageHouse = document.createElement('div');
-            errorMessageHouse.id = 'errorMessageHouse';
-            errorMessageHouse.appendChild(errorMessage);
-            document.appendChild(errorMessageHouse);
-         } 
+         const errorModal = document.getElementById('modal');
+         errorModal.classList.remove('hidden');
+         p = document.getElementById('modal-message')
+         p.innerText = error
+         setTimeout(() => {
+           errorModal.className = 'hidden'
+          
+         }, 3000)
          
       })
    }
