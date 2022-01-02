@@ -10,7 +10,16 @@ Scribble Search
 
 ## Getting Started
 
-- clone Repo to your local Machine using "Git Clone"
+- Clone Repo to your local Machine using "Git Clone"
 - Open index.html with you browser
-- Have fun searching for different songs and getting all sorts of information
+- Have fun searching for different songs and getting the artist, song, and release date with each song with th ename you search
+
+## Credit
+
+Used the https://musicbrainz.org/ API for retrieving data.
+
+## Author 
+ 
+Harry Gustafson
+
 
