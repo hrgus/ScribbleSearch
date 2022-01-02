@@ -22,4 +22,6 @@ Used the https://musicbrainz.org/ API for retrieving data.
  
 Harry Gustafson
 
+## License
 
+This project is [MIT](./MIT.md) licensed.
