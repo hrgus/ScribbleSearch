@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
          let savedSongsContainer = document.querySelector('#savedSongs');
             savedSongsContainer.appendChild(savedSongsList);
          const unSaveSongBtn = document.createElement('button');
+            songCardHouse.removeChild(saveSongBtn);
             unSaveSongBtn.className = 'unsavedSongBtn';
             unSaveSongBtn.textContent = "-";
             unSaveSongBtn.addEventListener('click', unSaveSongFunc);
