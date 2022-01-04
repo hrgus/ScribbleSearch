@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(resp => resp.json())
       .then((respObj) => { 
          respArray = respObj['releases'];
+         let songCardsContainer = document.querySelector('#songCardsContainer');
+         songCardsContainer.innerHTML = " ";
          // console.log(respArray);
          respArray.forEach(result => createSongCard(result));
       })
@@ -65,26 +67,28 @@ document.addEventListener('DOMContentLoaded', function() {
       let savedSongsList = songCardHouse.cloneNode(true);
          savedSongsList.className = 'savedSongsList';
       
-      function createSavedSongsList() {
+      function createSavedSongsList(e) {
          let savedSongsContainer = document.querySelector('#savedSongs');
             savedSongsContainer.appendChild(savedSongsList);
          const unSaveSongBtn = document.createElement('button');
-            songCardHouse.remove(saveSongBtn);
+            const btnToKill = savedSongsList.childNodes[1];
+            btnToKill.parentNode.removeChild( btnToKill );
             unSaveSongBtn.className = 'unsavedSongBtn';
             unSaveSongBtn.textContent = "-";
-            unSaveSongBtn.addEventListener('click', unSaveSongFunc);
+            unSaveSongBtn.addEventListener('click', (e) => unSaveSongFunc(btnToKill));
             savedSongsList.appendChild(unSaveSongBtn);
         
-         function unSaveSongFunc() {
+         function unSaveSongFunc(btn) {
             savedSongsList.removeChild(unSaveSongBtn);
+            savedSongsList.appendChild(btn)
             savedSongsContainer.removeChild(savedSongsList);
             songCardsContainer.prepend(songCardHouse);
          }
    
       }
-      function clearSongCardsContainer() {
+      function clearSongCardsContainer(e) {
          songCardsContainer.removeChild(songCardHouse);
-         createSavedSongsList()
+         createSavedSongsList(e);
    
       }
       
