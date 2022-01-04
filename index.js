@@ -14,16 +14,19 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(resp => resp.json())
       .then((respObj) => { 
          respArray = respObj['releases'];
-         console.log(respArray);
+         // console.log(respArray);
          respArray.forEach(result => createSongCard(result));
       })
       .catch(function(error) {
-         const errorModal = document.getElementById('modal');
-         errorModal.classList.remove('hidden');
-         p = document.getElementById('modal-message')
-         p.innerText = error
+         const errorMessageHome = document.createElement('div');
+         errorMessageHome.id('errorMessageHome');
+         const errorMessage = document.createElement('p');
+         errorMessage.id('errorMessage');
+         errorMessage.textContent = error;
+         errorMessageHome.appendChild(errorMessage);
+         document.appendChild(errorMessageHome);
          setTimeout(() => {
-           errorModal.className = 'hidden'
+         //   errorMessageHome.className = 'hidden';
           
          }, 3000)
          
@@ -67,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
          let savedSongsContainer = document.querySelector('#savedSongs');
             savedSongsContainer.appendChild(savedSongsList);
          const unSaveSongBtn = document.createElement('button');
-            songCardHouse.removeChild(saveSongBtn);
+            songCardHouse.remove(saveSongBtn);
             unSaveSongBtn.className = 'unsavedSongBtn';
             unSaveSongBtn.textContent = "-";
             unSaveSongBtn.addEventListener('click', unSaveSongFunc);
