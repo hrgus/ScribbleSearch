@@ -89,7 +89,8 @@ header {
    /* background-color: violet; */
    position: absolute;
    left: 2px;
-   vertical-align: 200px;
+   padding-top: 20px;
+   /* vertical-align: 200px; */
    /* padding-left: 20px; */
    /* float: left; */
    width: 44%;
