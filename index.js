@@ -18,17 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
          respArray.forEach(result => createSongCard(result));
       })
       .catch(function(error) {
-         const errorMessageHome = document.createElement('div');
-         errorMessageHome.id('errorMessageHome');
-         const errorMessage = document.createElement('p');
-         errorMessage.id('errorMessage');
-         errorMessage.textContent = error;
-         errorMessageHome.appendChild(errorMessage);
-         document.appendChild(errorMessageHome);
-         setTimeout(() => {
-         //   errorMessageHome.className = 'hidden';
-          
-         }, 3000)
+         if(resp === " "){
+            const errorMessageHome = document.createElement('div');
+            errorMessageHome.id('errorMessageHome');
+            const errorMessage = document.createElement('p');
+            errorMessage.id('errorMessage');
+            errorMessage.textContent = error;
+            errorMessageHome.appendChild(errorMessage);
+            document.appendChild(errorMessageHome);
+            console.log(error);
+         } 
          
       })
    }

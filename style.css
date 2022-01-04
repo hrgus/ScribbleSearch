@@ -97,6 +97,12 @@ header {
    border-radius: 5px;
 }
 
+#errorMessageHome{
+   display: inline-block;
+   position: relative;
+   padding-bottom: 15px;
+   left: 50%;
+}
 
 /* .sideBarContainer { 
    height: auto;
