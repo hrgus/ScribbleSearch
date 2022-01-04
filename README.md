@@ -2,6 +2,8 @@
 
 Scribble Search
 
+![demo](https://user-images.githubusercontent.com/89154145/148118896-3bec47dd-87cd-49c7-b03d-b18bc6beb634.gif)
+
 ## Built With
 
 - HTML
