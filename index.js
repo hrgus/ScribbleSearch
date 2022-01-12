@@ -1,4 +1,7 @@
 
+let results = []
+
+
 document.addEventListener('DOMContentLoaded', function() {
 
    const searchForm = document.querySelector('#searchForm');
@@ -15,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
       .then((respObj) => { 
          respArray = respObj['releases'];
          
+         results = respArray;
+
          let songCardsContainer = document.querySelector('#songCardsContainer');
          songCardsContainer.innerHTML = " ";
          // console.log(respArray);
@@ -38,6 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
    
    searchForm.addEventListener('submit', searchForSong)
    
+   const buttonToSort = document.getElementById('buttonToSort');
+   buttonToSort.addEventListener('click', function(e) {
+      // console.log(results);
+      
+      console.log(results.sort((a,b) => (a.date.slice(0,3) - b.date.slice(0,3))) );
+
+   })
+
    function createSongCard(result) {
       const saveSongBtn = document.createElement('button');
          saveSongBtn.setAttribute('class', 'saveSongBtn')
@@ -77,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
       let savedSongsList = songCardHouse.cloneNode(true);
          savedSongsList.className = 'savedSongsList';
+
+
       
       function createSavedSongsList(e) {
          let savedSongsContainer = document.querySelector('#savedSongs');
@@ -110,3 +125,5 @@ document.addEventListener('DOMContentLoaded', function() {
    }      
 
 })
+
+
